@@ -1,0 +1,34 @@
+ALGORITHM sum_of_sets_elements_with_table
+VAR
+tab_1 : ARRAY_OF INTEGER[5];
+tab_2 : ARRAY_OF INTEGER[5];
+i,j :=0;
+sum_sim,sum_dif:=0;
+BEGIN
+// initialise first set
+    Write("Please put first set elements:");
+    FOR i FROM 0 TO tab_1.length-1 STEP 1  DO
+        Read (tab_1[i]);
+    END_FOR    
+
+// initialise seconde set
+    Write("Please put seconde set elements:");
+    FOR i FROM 0 TO tab_2.length-1 STEP 1  DO
+        Read (tab_2[i]);
+    END_FOR   
+  
+// First solution using table
+    FOR i FROM 0 TO tab_1.length-1  STEP 1  DO
+        FOR j FROM 0 TO tab_2.length-1 STEP 1  DO
+            IF (tab_1[i]==tab_2[j]) THEN
+                sum_sim+=tab_1[i]+tab_2[j];
+            ELSE
+                sum_dif:=tab_1[i];
+            END_IF
+        END_FOR
+    END_FOR
+    write("the sum of overlapping elements in two sets"+sum_sim);
+    write("the sum of all distinct elements from the set"+sum_dif);
+
+    // Seconde solution using HASH_TABLE
+END

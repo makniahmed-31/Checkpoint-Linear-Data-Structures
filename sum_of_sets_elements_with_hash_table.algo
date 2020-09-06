@@ -1,0 +1,33 @@
+ALGORITHM sum_of_sets_elements_with_hash_table
+VAR
+    htab_1:HASH_TABLE<INTEGER,INTEGER>;
+    htab_2:HASH_TABLE<INTEGER,INTEGER>;
+    i,j :=0;
+    e_1,e_2:INTEGER;
+    sum_sim,sum_dif:=0;
+BEGIN
+    // initialise first set
+    write("Please put first set elements:");
+    FOR i FROM 0 TO 4 STEP 1  DO
+        htab_1.insert(i,e_1);
+    END_FOR    
+
+// initialise seconde set
+    write("Please put seconde set elements:");
+    FOR i FROM 0 TO 4 STEP 1  DO
+        htab_2.insert(i,e_2);
+    END_FOR   
+
+// Seconde solution using HASH_TABLE
+    FOR i FROM 0 TO htab_1.length-1  STEP 1  DO
+        FOR j FROM 0 TO htab_2.length-1 STEP 1  DO
+            IF (htab_1.get(i)==htab_2.get(j)) THEN
+                sum_sim+=htab_1.get(i)+htab_2.get(j);
+            ELSE
+                sum_dif:=htab_1.get(i);
+            END_IF
+        END_FOR
+    END_FOR
+    write("the sum of overlapping elements in two sets"+sum_sim);
+    write("the sum of all distinct elements from the set"+sum_dif);
+END
